@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   mask_text_input_formatter: ^2.4.0
   flutter_svg: ^2.0.7
+  dropdown_button2: ^2.3.9
+  animations: ^2.0.7
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -65,8 +67,7 @@ flutter:
         - asset: assets/fonts/Rubik-Light.ttf
           weight: 300
   assets:
-    - assets/icons/phone.svg
-    - assets/icons/phone_blue.svg
+    - assets/icons/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
