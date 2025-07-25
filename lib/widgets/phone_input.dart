@@ -8,9 +8,9 @@ class PhoneInputWidget extends StatefulWidget {
   final ValueChanged<bool> onFilledChanged;
 
   const PhoneInputWidget({
-    Key? key,
+    super.key,
     required this.onFilledChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<PhoneInputWidget> createState() => PhoneInputWidgetState();
@@ -55,12 +55,20 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
     super.dispose();
   }
 
+  void clear() {
+    _phoneController.clear();
+    widget.onFilledChanged(false);
+    isFilled = false;
+    fieldColor = Color(0xFFF5F5F5);
+    _phoneIcon = "assets/icons/phone.svg";
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300), // ← тут задаётся плавность
-      curve: Curves.easeInOut, // можно поменять на другую анимацию
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
       padding: EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
         color: fieldColor,

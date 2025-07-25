@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../widgets/add_program_form.dart';
 import '../../../widgets/how_it_works.dart';
+import '../../../widgets/dialog_add_program.dart';
+import '../../../widgets/phone_input.dart';
+import '../../../widgets/drop_down_button.dart';
+
 
 
 class AddProgramPage extends StatefulWidget {
@@ -12,6 +16,8 @@ class AddProgramPage extends StatefulWidget {
 }
 
 class AddProgramPageState extends State<AddProgramPage> {
+  final _phoneKey = GlobalKey<PhoneInputWidgetState>();
+  final _dropdownKey = GlobalKey<DropDownButtonState>();
   double _left = 0;
   int i = 0;
   late double _top;
@@ -31,21 +37,27 @@ class AddProgramPageState extends State<AddProgramPage> {
   }
 
   void _onSubmit () {
-    print("It's work!");
+    showSuccessDialog(context, _resetForm);
+  }
+
+  void _resetForm() {
+    _phoneKey.currentState?.clear();
+    _dropdownKey.currentState?.clear();
+    setState((){}); // чтобы обновить кнопку
   }
 
   @override
   Widget build(BuildContext contextVt) {
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOutCirc,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOutQuint,
       top: _top,
       left: _left,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            AddProgramForm(onSubmit: _onSubmit),
+            AddProgramForm(onSubmit: _onSubmit, phoneKey: _phoneKey, dropDownButtonKey: _dropdownKey,),
             SizedBox(height: 32,),
             HowItWorksWidget()
           ],

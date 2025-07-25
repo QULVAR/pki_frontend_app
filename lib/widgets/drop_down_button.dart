@@ -7,9 +7,9 @@ class DropDownButton extends StatefulWidget {
   final ValueChanged<String?> onSelectedChanged;
 
   const DropDownButton({
-    Key? key,
+    super.key,
     required this.onSelectedChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<DropDownButton> createState() => DropDownButtonState();
@@ -24,6 +24,12 @@ class DropDownButtonState extends State<DropDownButton> {
     'Заряд 120', 
   ];
   String? _selectedProgram;
+
+  void clear() {
+    _selectedProgram = null;
+    widget.onSelectedChanged(null);
+    isSelected = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +67,7 @@ class DropDownButtonState extends State<DropDownButton> {
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontSize: 16,
+                fontWeight: FontWeight.w400
               ),
             ),
           )).toList(),

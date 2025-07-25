@@ -5,7 +5,14 @@ import 'drop_down_button.dart';
 
 class AddProgramForm extends StatefulWidget {
   final VoidCallback onSubmit;
-  const AddProgramForm({super.key, required this.onSubmit});
+  final GlobalKey<PhoneInputWidgetState> phoneKey;
+  final GlobalKey<DropDownButtonState> dropDownButtonKey;
+  const AddProgramForm({
+    super.key,
+    required this.onSubmit,
+    required this.phoneKey,
+    required this.dropDownButtonKey
+  });
 
   @override
   AddProgramFormState createState() => AddProgramFormState();
@@ -14,15 +21,12 @@ class AddProgramForm extends StatefulWidget {
 class AddProgramFormState extends State<AddProgramForm> {
   bool _phoneOk = false, _progOk = false;
 
-  late Color _buttonBackgroundColor;
-
   void _onPhoneChanged(bool ok) => setState(() => _phoneOk = ok);
   void _onProgChanged(String? val) => setState(() => _progOk = val != null);
 
   @override
   Widget build(BuildContext context) {
     final isFormValid = _phoneOk && _progOk;
-    _buttonBackgroundColor = isFormValid ? Color(0xFF4DABEE) : Color(0xFFE6E6E6);
     return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -64,8 +68,8 @@ class AddProgramFormState extends State<AddProgramForm> {
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 8),
-            PhoneInputWidget(onFilledChanged: _onPhoneChanged),
-            const SizedBox(height: 18),
+            PhoneInputWidget(key: widget.phoneKey, onFilledChanged: _onPhoneChanged),
+            SizedBox(height: 18),
             Text(
               'Выберите программу:',
               style: const TextStyle(
@@ -78,22 +82,29 @@ class AddProgramFormState extends State<AddProgramForm> {
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 12),
-            DropDownButton(onSelectedChanged: _onProgChanged),
+            DropDownButton(key: widget.dropDownButtonKey, onSelectedChanged: _onProgChanged),
           ],
         ),
       ),
-      Container(
+      AnimatedContainer(
         width: 366,
         height: 44,
         margin: EdgeInsets.only(top: 2, right: 12, left: 12, bottom: 0),
+        duration: Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        decoration: BoxDecoration(
+          color: isFormValid ? Color(0xFF4DABEE) : Color(0xFFE6E6E6),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: TextButton(
-          onPressed: widget.onSubmit,
+          onPressed: isFormValid ? widget.onSubmit : null,
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
             minimumSize: Size(366, 44),
-            backgroundColor: _buttonBackgroundColor
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
           ),
           child: Text(
             'Применить',
