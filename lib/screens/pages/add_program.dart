@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../widgets/add_program_form.dart';
-import '../../widgets/how_it_works.dart';
-import '../../widgets/dialog_add_program.dart';
-import '../../widgets/phone_input.dart';
-import '../../widgets/drop_down_button.dart';
+import '../../widgets/add_program/add_program_form.dart';
+import '../../widgets/add_program/how_it_works.dart';
+import '../../widgets/add_program/dialog_add_program.dart';
+import '../../widgets/global/fields and alerts/phone_input.dart';
+import '../../widgets/global/fields and alerts/drop_down_button.dart';
 
 
 
@@ -26,6 +26,8 @@ class AddProgramPageState extends State<AddProgramPage> {
 
   void _onSubmit () {
     showSuccessDialog(context, _resetForm);
+    _phoneKey.currentState?.clear();
+    _dropdownKey.currentState?.clear();
   }
 
   void _resetForm() {

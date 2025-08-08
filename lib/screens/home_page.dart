@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/bottom_navigation_bar.dart';
-import '../widgets/app_bar.dart';
+import '../widgets/global/bottom_navigation_bar.dart';
+import '../widgets/global/app_bar.dart';
 
 import 'pages/add_program.dart';
 import 'pages/statistics.dart';
@@ -10,8 +10,13 @@ import 'pages/menu.dart';
 
 
 class HomePage extends StatefulWidget {
+  final VoidCallback logout;
   final double top;
-  const HomePage({super.key, required this.top});
+  const HomePage({
+    super.key,
+    required this.top,
+    required this.logout
+  });
 
   @override
   State<HomePage> createState() => HomePageState();
@@ -36,7 +41,7 @@ class HomePageState extends State<HomePage> {
       AddProgramPage(key: _addProgramPageKey),
       StatisticsPage(key: _statisticsPageKey),
       ProgramControlPage(key: _programControlPageKey),
-      MenuPage(key: _menuPageKey)
+      MenuPage(key: _menuPageKey, logout: widget.logout,)
     ];
     _top = widget.top;
   }

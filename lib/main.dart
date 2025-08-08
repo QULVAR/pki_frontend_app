@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'screens/login.dart';
 import 'screens/home_page.dart';
@@ -16,8 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  bool _authorized = false;
-
+  bool _authorized = true;
   final _loginPageKey = GlobalKey<LoginPageState>();
   final _homePageKey = GlobalKey<HomePageState>();
 
@@ -27,9 +27,24 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _pages = [
-      HomePage(key: _homePageKey, top: 844),
+      HomePage(key: _homePageKey, top: 844, logout: _logout,),
       LoginPage(key: _loginPageKey, authorize: authorize)
     ];
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_authorized) {
+        animationAuthorize();
+      }
+    });
+  }
+
+  void _logout() {
+    _loginPageKey.currentState?.clear();
+    _homePageKey.currentState?.moveToY(-844);
+    _loginPageKey.currentState?.moveToY(0);
+    setState(() {
+      _authorized = false;
+    });
   }
 
   void authorize (String email, String password) {
@@ -55,9 +70,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    if (_authorized) {
-      animationAuthorize();
-    }
     return Container(
       width: 390,
       height: 844,
@@ -66,8 +78,25 @@ class _MyAppState extends State<MyApp> {
       ),
       child: MaterialApp(
         title: 'PKI_UL Demo',
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('ru'),
+          Locale('en'),
+        ],
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(95, 255, 255, 255)),
+          useMaterial3: true,
+          appBarTheme: AppBarTheme(
+            elevation: 0,
+            scrolledUnderElevation: 0,
+            surfaceTintColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.white,
+          ),
         ),
         home: Stack(children: _pages),
       )

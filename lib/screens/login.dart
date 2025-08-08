@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 
-import '../widgets/login_form.dart';
-import '../widgets/email_field.dart';
-import '../widgets/password_field.dart';
+import '../widgets/login/login_form.dart';
+import '../widgets/global/fields and alerts/email_field.dart';
+import '../widgets/global/fields and alerts/password_field.dart';
 
 
 
@@ -32,6 +32,11 @@ class LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
+  void clear() {
+    _emailKey.currentState?.clear();
+    _passwordKey.currentState?.clear();
+  }
+
   void moveToY(double top) {
     setState(() => _top = top);
   }
@@ -40,7 +45,7 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-          AnimatedPositioned(
+        AnimatedPositioned(
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOutQuint,
           top: _top,
