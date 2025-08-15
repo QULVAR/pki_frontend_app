@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pki_frontend_app/main.dart';
 
 class CalendarTimePopUp extends StatefulWidget {
   final DateTime startTime;
@@ -39,14 +40,14 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 86,
-      height: 36,
+      width: 86.w,
+      height: 36.h,
       margin: EdgeInsets.zero,
-      padding: EdgeInsets.only(top: 5, bottom: 3),
+      padding: EdgeInsets.only(top: 5.h, bottom: 3.h),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Color(0xFFEDF7FD),
-        borderRadius: BorderRadius.circular(6)
+        borderRadius: BorderRadius.circular(6.sp)
       ),
       child: TextButton(
         style: ButtonStyle(
@@ -63,22 +64,22 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
             context: context,
             barrierColor: Colors.black.withValues(alpha: 0.2),
             builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
+              height: 216.h,
+              padding: EdgeInsets.only(top: 6.h),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.sp),
                 color: Color(0xFFF5F5F5),
               ),
               child: SafeArea(
                 top: false,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: 358,
-                        height: 216,
+                        width: 358.w,
+                        height: 216.h,
                         child: CupertinoDatePicker(
                           mode: CupertinoDatePickerMode.time,
                           initialDateTime: DateTime(2025, 1, 1, int.parse(_hours), int.parse(_minutes)),
@@ -109,33 +110,33 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w400,
-                fontSize: 22,
+                fontSize: 22.sp,
                 height: (28/22),
                 letterSpacing: 0.35,
                 color: Color(0xFF404040)
               ),
             ),
-            SizedBox(width: 3,),
+            SizedBox(width: 3.h,),
             Text(
               ':',
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w400,
-                fontSize: 22,
+                fontSize: 22.sp,
                 height: (28/22),
                 letterSpacing: 0.35,
                 color: Color(0xFF404040)
               ),
             ),
-            SizedBox(width: 5,),
+            SizedBox(width: 5.w,),
             Text(
               _minutes,
               textAlign: TextAlign.right,
               style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w400,
-                fontSize: 22,
+                fontSize: 22.sp,
                 height: (28/22),
                 letterSpacing: 0.35,
                 color: Color(0xFF404040)

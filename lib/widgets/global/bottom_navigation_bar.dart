@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pki_frontend_app/main.dart';
 
 class BottomNavigationBarCustom extends StatelessWidget {
   final int currentIndex;
@@ -10,17 +11,17 @@ class BottomNavigationBarCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 40),
-      width: 390,
-      height: 104,
+      padding: EdgeInsets.only(top: 16.h, right: 16.w, left: 16.w, bottom: 40.h),
+      width: 390.w,
+      height: 104.h,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Color.fromARGB(5, 0, 0, 0),
             offset: const Offset(0, -2),
-            blurRadius: 2.6,
-            spreadRadius: 1,
+            blurRadius: 2.6.sp,
+            spreadRadius: 1.sp,
           )
         ],
       ),
@@ -42,15 +43,15 @@ class BottomNavigationBarCustom extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: active ? const Color(0xFFE6F4FF) : Colors.transparent,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.sp),
         ),
         child: AnimatedSwitcher(
           duration: Duration(milliseconds: 300),
           child: SvgPicture.asset(
             active ? '${icon}_selected.svg' : '$icon.svg',
             key: ValueKey(active ? '${icon}_selected.svg' : '$icon.svg'),
-            width: 86,
-            height: 48,
+            width: 86.sp,
+            height: 48.sp,
           ),
         )
       ),

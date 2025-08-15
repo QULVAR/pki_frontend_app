@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:pki_frontend_app/main.dart';
 
 import '../../widgets/program_control/program_control_form.dart';
 import '../../widgets/program_control/program_control_data_viewer.dart';
@@ -25,6 +26,28 @@ class ProgramControlPageState extends State<ProgramControlPage> {
   double _animatedPositionedHeight = 38;
   late double _left;
   double _height = 0;
+  bool _animate = true;
+
+  void moveToX(double left) {
+    setState(() {
+      _left = left;
+      _animate = true;
+    });
+  }
+
+  void moveToXWithoutAnimation(double left) {
+    setState(() {
+      _animate = false;
+      _left = left;
+    });
+  }
+
+  void clear() {
+    _programControlFormKey.currentState?.clear();
+    setState(() {
+      dataByDescription = {};
+    });
+  }
 
   void _onSelectedChanged(String? program) {
     setState(() {
@@ -48,10 +71,6 @@ class ProgramControlPageState extends State<ProgramControlPage> {
     });
   }
 
-  void moveToX(double left) {
-    setState(() => _left = left);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -71,41 +90,41 @@ class ProgramControlPageState extends State<ProgramControlPage> {
                              || dataByDescription[_dropDownButtonValue]!.isEmpty;
     
     _height = !(_isEmptyControlData)
-    ? (225 + dataByDescription[_dropDownButtonValue]!.length * 46).toDouble()
-    : 225 + 38;
+    ? (225.h + dataByDescription[_dropDownButtonValue]!.length * 46.h).toDouble()
+    : 225.h + 38.h;
 
-    _sizedBoxMarginBottom = _height <= 623
-    ? 16
-    : _height - 623;
+    _sizedBoxMarginBottom = _height <= 623.h
+    ? 16.h
+    : _height - 623.h;
 
-    _animatedPositionedHeight = _height <= 623
-    ? _height + 32
+    _animatedPositionedHeight = _height <= 623.h
+    ? _height + 32.h
     : _height;
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: _animate ? 300 : 0),
       curve: Curves.easeInOutCirc,
       top: 0,
-      left: _left,
-      width: 390,
+      left: _left.w,
+      width: 390.w,
       height: _animatedPositionedHeight,
       child: SingleChildScrollView(
         controller: _scrollController,
-        padding: EdgeInsets.only(right: 12, left: 12),
+        padding: EdgeInsets.only(right: 12.w, left: 12.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               child: Container(
-                margin: EdgeInsets.only(top: 16, bottom: _sizedBoxMarginBottom),
-                padding: EdgeInsets.only(top: 12, right: 12, left: 12),
+                margin: EdgeInsets.only(top: 16.h, bottom: _sizedBoxMarginBottom),
+                padding: EdgeInsets.only(top: 11.h, right: 12.w, left: 12.w),
                 height: _height,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(6),
+                  borderRadius: BorderRadius.circular(6.sp),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +133,17 @@ class ProgramControlPageState extends State<ProgramControlPage> {
                       key: _programControlFormKey,
                       onSelectedChanged: _onSelectedChanged
                     ),
+                    SizedBox(height: 24.h),
+                    SizedBox(
+                      height: 1,
+                      width: 342.w,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFF2F2F2)
+                        )
+                      ),
+                    ),
+                    SizedBox(height: 24.h,),
                     ProgramControlDataViewer(
                       isEmptyControlData: _isEmptyControlData,
                       dataByDescription: dataByDescription,

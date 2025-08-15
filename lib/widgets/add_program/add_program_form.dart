@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pki_frontend_app/main.dart';
 
 import '../global/fields and alerts/phone_input.dart';
 import '../global/fields and alerts/drop_down_button.dart';
@@ -31,13 +32,13 @@ class AddProgramFormState extends State<AddProgramForm> {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-        width: 366,
-        height: 256,
-        margin: EdgeInsets.only(top: 16, right: 12, left: 12, bottom: 18),
-        padding: EdgeInsets.only(top: 12, right: 12, left: 12, bottom: 16),
+        width: 366.w,
+        height: 256.h,
+        margin: EdgeInsets.only(top: 16.h, right: 12.w, left: 12.w, bottom: 18.h),
+        padding: EdgeInsets.only(top: 12.h, right: 12.w, left: 12.w, bottom: 15.h),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(6.sp),
         ),
         child:
         Column(
@@ -45,64 +46,64 @@ class AddProgramFormState extends State<AddProgramForm> {
           children: [
             Text(
               'Добавление пользователя в\u00A0программу',
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.normal,
-                fontSize: 20,
+                fontSize: 20.sp,
                 height: 1,
                 letterSpacing: 0.0,
               ),
               textAlign: TextAlign.start,
             ),
-            SizedBox(height: 26),
+            SizedBox(height: 26.h),
             Text(
               'Введите номер телефона:',
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w300,
-                fontSize: 14,
+                fontSize: 14.sp,
                 height: 1.0,
                 letterSpacing: 0.0,
               ),
               textAlign: TextAlign.start,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             PhoneInputWidget(key: widget.phoneKey, onFilledChanged: _onPhoneChanged),
-            SizedBox(height: 18),
+            SizedBox(height: 18.h),
             Text(
               'Выберите программу:',
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Rubik',
                 fontWeight: FontWeight.w300,
-                fontSize: 14,
+                fontSize: 14.sp,
                 height: 1.0,
                 letterSpacing: 0.0,
               ),
               textAlign: TextAlign.start,
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 12.h),
             DropDownButton(key: widget.dropDownButtonKey, onSelectedChanged: _onProgChanged),
           ],
         ),
       ),
       AnimatedContainer(
-        width: 366,
-        height: 44,
-        margin: EdgeInsets.only(top: 2, right: 12, left: 12, bottom: 0),
+        width: 366.w,
+        height: 44.h,
+        margin: EdgeInsets.only(top: 2.h, right: 12.w, left: 12.w, bottom: 0),
         duration: Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: isFormValid ? Color(0xFF4DABEE) : Color(0xFFE6E6E6),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10.sp),
         ),
         child: TextButton(
           onPressed: isFormValid ? widget.onSubmit : null,
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10.sp),
             ),
-            minimumSize: Size(366, 44),
+            minimumSize: Size(366.w, 44.h),
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
           ),
@@ -111,7 +112,7 @@ class AddProgramFormState extends State<AddProgramForm> {
             style: TextStyle(
               fontFamily: 'Rubik',
               fontWeight: FontWeight.w400,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontStyle: FontStyle.normal,
               height: 1.25,
               letterSpacing: 0.0,

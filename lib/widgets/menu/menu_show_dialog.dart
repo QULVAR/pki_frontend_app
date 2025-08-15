@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pki_frontend_app/main.dart';
 
 void showLogoutConfirm(BuildContext context, VoidCallback onLogout) {
   showCupertinoDialog(
@@ -15,7 +16,7 @@ void showLogoutConfirm(BuildContext context, VoidCallback onLogout) {
           },
           textStyle: TextStyle(
             color: CupertinoColors.activeBlue,
-            fontSize: 17,
+            fontSize: 17.sp,
             fontWeight: FontWeight.w500
           ),
           child: const Text('Выход'),
@@ -29,7 +30,7 @@ void showLogoutConfirm(BuildContext context, VoidCallback onLogout) {
           onPressed: () => Navigator.of(ctx).pop(),
           textStyle: TextStyle(
             color: CupertinoColors.activeBlue,
-            fontSize: 17,
+            fontSize: 17.sp,
           ),
           child: const Text('Отмена'),
         ),

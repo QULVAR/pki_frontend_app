@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pki_frontend_app/main.dart';
 
 
 class PasswordInputWidget extends StatefulWidget {
@@ -46,11 +47,13 @@ class PasswordInputWidgetState extends State<PasswordInputWidget> {
   }
 
   void clear() {
-    _passwordController.clear();
-    widget.onFilledChanged(null);
-    isFilled = false;
-    _addedPathToPasswordFieldIcon = '_with_line';
-    _obscureText = true;
+    setState(() {
+      _passwordController.clear();
+      widget.onFilledChanged(null);
+      isFilled = false;
+      _addedPathToPasswordFieldIcon = '_with_line';
+      _obscureText = true;
+    });
   }
 
   @override
@@ -58,9 +61,9 @@ class PasswordInputWidgetState extends State<PasswordInputWidget> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
-      width: 342,
-      height: 48,
-      padding: EdgeInsets.only(bottom: 14, top: 14, left: 12, right: 0),
+      width: 342.w,
+      height: 48.h,
+      padding: EdgeInsets.only(bottom: 14.h, top: 14.h, left: 12.w, right: 0),
       decoration: BoxDecoration(
         color: Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(8),
@@ -88,8 +91,8 @@ class PasswordInputWidgetState extends State<PasswordInputWidget> {
                     child: SvgPicture.asset(
                       'assets/icons/eye$_addedPathToPasswordFieldIcon.svg',
                       key: ValueKey(_addedPathToPasswordFieldIcon),
-                      width: 21,
-                      height: _addedPathToPasswordFieldIcon != '' ? 18 : 16,
+                      width: 21.sp,
+                      height: _addedPathToPasswordFieldIcon != '' ? 18.sp : 16.sp,
                     ),
                 );
               },
@@ -100,16 +103,17 @@ class PasswordInputWidgetState extends State<PasswordInputWidget> {
           hintStyle: TextStyle(
             fontFamily: 'Rubik',
             fontWeight: FontWeight.w300,
-            fontSize: 16,
+            fontSize: 16.sp,
             height: (20/16),
             letterSpacing: 0,
             color: Color(0xFFA7A7A7)
           ),
+          hintFadeDuration: Duration(milliseconds: 300)
         ),
         style: TextStyle(
           fontFamily: 'Rubik',
           fontWeight: FontWeight.w400,
-          fontSize: 16,
+          fontSize: 16.sp,
           height: (20/16),
           letterSpacing: 0,
           color: Color(0xFF404040)

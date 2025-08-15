@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pki_frontend_app/main.dart';
 
 import '../../scripts/formatting.dart';
 
@@ -38,15 +39,15 @@ class ProgramControlNumbersGeneratorState extends State<ProgramControlNumbersGen
               decoration: BoxDecoration(
                 color: backgroundColorNumber
               ),
-              width: 253,
-              height: 46,
-              padding: EdgeInsets.only(top: 13.5, left: 4, bottom: 13.5),
+              width: 253.w,
+              height: 46.h,
+              padding: EdgeInsets.only(top: 13.5.h, left: 4.w, bottom: 13.5.h),
               child: Text(
                 phoneFormat(user['phoneNumber']),
                 style: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   height: 1,
                   letterSpacing: 0,
                   color: Color(0xFF404040)
@@ -54,7 +55,7 @@ class ProgramControlNumbersGeneratorState extends State<ProgramControlNumbersGen
               ),
             ),
             SizedBox(
-              height: 46,
+              height: 46.h,
               width: 1,
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -69,9 +70,9 @@ class ProgramControlNumbersGeneratorState extends State<ProgramControlNumbersGen
               decoration: BoxDecoration(
                 color: backgroundColorNumber
               ),
-              width: 88,
-              height: 46,
-              padding: EdgeInsets.only(top: 8, left: 18.5, bottom: 8, right: 18.5),
+              width: 87.w,
+              height: 46.h,
+              padding: EdgeInsets.only(top: 8.h, left: 18.5.w, bottom: 8.h, right: 18.5.w),
               child: CupertinoSwitch(
                 value: user['isOn'],
                 activeTrackColor: Color(0xFF4DABEE),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pki_frontend_app/main.dart';
 
 import '../../widgets/add_program/add_program_form.dart';
 import '../../widgets/add_program/how_it_works.dart';
@@ -19,18 +20,31 @@ class AddProgramPageState extends State<AddProgramPage> {
   final _phoneKey = GlobalKey<PhoneInputWidgetState>();
   final _dropdownKey = GlobalKey<DropDownButtonState>();
   double _left = 0;
+  bool _animate = true;
 
   void moveToX(double left) {
-    setState(() => _left = left);
+    setState(() {
+      _left = left;
+      _animate = true;
+    });
+  }
+
+  void moveToXWithoutAnimation(double left) {
+    setState(() {
+      _animate = false;
+      _left = left;
+    });
   }
 
   void _onSubmit () {
-    showSuccessDialog(context, _resetForm);
+    FocusScope.of(context).unfocus();
+    showSuccessDialog(context, resetForm);
     _phoneKey.currentState?.clear();
     _dropdownKey.currentState?.clear();
   }
 
-  void _resetForm() {
+  void resetForm() {
+    FocusScope.of(context).unfocus();
     _phoneKey.currentState?.clear();
     _dropdownKey.currentState?.clear();
     setState((){});
@@ -39,16 +53,16 @@ class AddProgramPageState extends State<AddProgramPage> {
   @override
   Widget build(BuildContext contextVt) {
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 500),
+      duration: Duration(milliseconds: _animate ? 300 : 0),
       curve: Curves.easeInOutQuint,
       top: 0,
-      left: _left,
+      left: _left.w,
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             AddProgramForm(onSubmit: _onSubmit, phoneKey: _phoneKey, dropDownButtonKey: _dropdownKey,),
-            SizedBox(height: 32,),
+            SizedBox(height: 32.h,),
             HowItWorksWidget()
           ],
         ),

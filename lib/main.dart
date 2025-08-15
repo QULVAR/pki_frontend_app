@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'dart:math' as math;
 
 import 'screens/login.dart';
 import 'screens/home_page.dart';
 
 void main() {
   runApp(const MyApp());
+}
+
+double kW = 1.0, kH = 1.0, s = 1.0;
+
+void initScale(BuildContext context) {
+  final mq = MediaQuery.of(context);
+  final size = mq.size;
+  kW = size.width / 390.0;
+  kH = size.height / 844.0;
+  s  = math.min(kW, kH);
+}
+
+extension SizerNum on num {
+  double get w  => this * kW;    //width
+  double get h  => this * kH;    //height
+  double get sp => this * s;     //safe
 }
 
 class MyApp extends StatefulWidget {
@@ -39,25 +56,28 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _logout() {
-    _loginPageKey.currentState?.clear();
     _homePageKey.currentState?.moveToY(-844);
     _loginPageKey.currentState?.moveToY(0);
+    _homePageKey.currentState?.clear();
     setState(() {
       _authorized = false;
     });
   }
 
   void authorize (String email, String password) {
+    FocusScope.of(context).unfocus();
     bool authorized = checkAuthorize(email, password);
     if (authorized) {
       animationAuthorize();
       setState(() {
         _authorized = true;
       });
+      _loginPageKey.currentState?.clear();
     }
   }
 
   void animationAuthorize() {
+    _homePageKey.currentState?.showStartPage();
     _homePageKey.currentState?.moveToY(0);
     _loginPageKey.currentState?.moveToY(-844);
   }
@@ -71,13 +91,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 390,
-      height: 844,
+      width: 390.w,
+      height: 844.h,
       decoration: BoxDecoration(
         color: Colors.white
       ),
       child: MaterialApp(
-        title: 'PKI_UL Demo',
+        builder: (context, child) {
+          initScale(context);
+          return child!;
+        },
+        title: 'PKI_UL Frontend',
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pki_frontend_app/main.dart';
 
 PreferredSizeWidget getAppBar(int selected) {
   String title = "";
@@ -21,14 +22,14 @@ PreferredSizeWidget getAppBar(int selected) {
           child: Text(
             title,
             key: ValueKey<String>(title),
-            style: const TextStyle(
+            style: TextStyle(
               fontFamily: 'Rubik',
               fontWeight: FontWeight.w400,
               fontStyle: FontStyle.normal,
-              fontSize: 20,
+              fontSize: 20.sp,
             ),
           ),
         ),
-        toolbarHeight: 54,
+        toolbarHeight: 54.h,
       );
 }

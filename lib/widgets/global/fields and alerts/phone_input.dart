@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:pki_frontend_app/main.dart';
 
 class PhoneInputWidget extends StatefulWidget {
   final ValueChanged<bool> onFilledChanged;
@@ -14,10 +15,9 @@ class PhoneInputWidget extends StatefulWidget {
 class PhoneInputWidgetState extends State<PhoneInputWidget> {
   bool isFilled = false;
   Color fieldColor = Color(0xFFF5F5F5);
-  Color textPreviousField = Color.fromARGB(255, 167, 167, 167);
   final TextEditingController _phoneController = TextEditingController();
   final _phoneFormatter = MaskTextInputFormatter(
-    mask: '###) ###-##-##',
+    mask: '+7 (###) ###-##-##',
     filter: {"#": RegExp(r'\d')},
   );
   String _phoneIcon = "assets/icons/phone.svg";
@@ -37,17 +37,10 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
       } else {
         setState(() {
           fieldColor = Color(0xFFF5F5F5);
-          textPreviousField = Color.fromARGB(255, 167, 167, 167);
           _phoneIcon = "assets/icons/phone.svg";
           isFilled = false;
           widget.onFilledChanged(isFilled);
         });
-        // ignore: prefer_is_empty
-        if (digitsOnly.length != 0) {
-          setState(() {
-            textPreviousField = Colors.black;
-          });
-        }
       }
     });
   }
@@ -71,10 +64,12 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      width: 342.w,
+      height: 48.h,
+      padding: EdgeInsets.only(top: 12.h, bottom: 12.h, right: 12.w, left: 12.w),
       decoration: BoxDecoration(
         color: fieldColor,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.sp),
       ),
       child: Row(
         children: [
@@ -83,45 +78,51 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
             child: SvgPicture.asset(
               _phoneIcon,
               key: ValueKey(_phoneIcon),
-              width: 24,
-              height: 24,
+              width: 24.sp,
+              height: 24.sp,
             ),
           ),
-          SizedBox(width: 8,),
-          Text(
-            '+7 (',
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w300,
-              fontSize: 16,
-              color: textPreviousField,
-              letterSpacing: 0.0,
-            ),
-          ),
+          SizedBox(width: 8.w,),
           SizedBox(
-            width: 259,
-            height: 48,
-            child: TextField(
-              keyboardType: TextInputType.phone,
-              controller: _phoneController,
-              inputFormatters: [_phoneFormatter],
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: '___) ___-__-__',
-                hintStyle: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 16,
-                  color: Color.fromARGB(255, 167, 167, 167),
-                  letterSpacing: 0.0,
+            height: 48.h,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                SizedBox(
+                  width: 259.w,
+                  height: 48.h,
+                  child: TextField(
+                    keyboardType: TextInputType.phone,
+                    controller: _phoneController,
+                    inputFormatters: [_phoneFormatter],
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.only(bottom: 0),
+                      hintText: '+7 (___) ___-__-__',
+                      hintStyle: TextStyle(
+                        fontFamily: 'Rubik',
+                        fontWeight: FontWeight.w300,
+                        fontSize: 16.sp,
+                        color: Color.fromARGB(255, 167, 167, 167),
+                        letterSpacing: 0.0,
+                      ),
+                      hintFadeDuration: Duration(milliseconds: 300)
+                    ),
+                    style: TextStyle(
+                      fontFamily: 'Rubik',
+                      fontWeight: FontWeight.w300,
+                      fontSize: 16.sp,
+                      color: Colors.black,
+                      letterSpacing: 0.0,
+                    ),
+                  ),
                 ),
-              ),
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 16
-              ),
+              ],
             ),
-          ),
+          )
         ],
       ),
     );

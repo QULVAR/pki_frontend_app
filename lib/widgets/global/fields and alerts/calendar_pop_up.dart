@@ -1,3 +1,4 @@
+import 'package:pki_frontend_app/main.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -158,11 +159,11 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
       insetAnimationCurve: Curves.easeInOut,
       insetPadding: EdgeInsets.zero,
       child: Container(
-        padding: EdgeInsets.only(top: 8),
-        height: widget.mode == 'single' ? 380 : 424,
-        width: 343,
+        padding: EdgeInsets.only(top: 8.h),
+        height: widget.mode == 'single' ? 380.h : 424.h,
+        width: 343.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(13),
+          borderRadius: BorderRadius.circular(13.sp),
           color: Colors.white
         ),
         child: Column(
@@ -170,24 +171,24 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 311,
-              height: 44,
-              margin: EdgeInsets.only(left: 16, right: 16),
+              width: 311.w,
+              height: 44.h,
+              margin: EdgeInsets.only(left: 16.w, right: 16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 156,
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 156.w,
+                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
                     child: Text(
                       headerText.isEmpty
-                      ? getCapitalizedMonth(DateTime(2024, 01, 01))
+                      ? getCapitalizedMonth(DateTime.now())
                       : headerText,
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontWeight: FontWeight.w500,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         height: (24/20),
                         letterSpacing: 0,
                         color: Color(0xFF4DABEE)
@@ -195,16 +196,16 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                     ),
                   ),
                   Container(
-                    width: 155,
-                    height: 44,
-                    padding: EdgeInsets.only(top: 13.34, bottom: 13.34),
+                    width: 155.w,
+                    height: 44.h,
+                    padding: EdgeInsets.only(top: 13.34.h, bottom: 13.34.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: 9.97,
-                          height: 17.32,
+                          width: 9.97.sp,
+                          height: 17.32.sp,
                           child: IconButton(
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
@@ -219,15 +220,15 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                             },
                             icon: SvgPicture.asset(
                               'assets/icons/left_arrow.svg',
-                              width: 9.97,
-                              height: 17.32,
+                              width: 9.97.sp,
+                              height: 17.32.sp,
                             ),
                           ),
                         ),
-                        SizedBox(width: 31.06),
+                        SizedBox(width: 31.06.h),
                         SizedBox(
-                          width: 9.97,
-                          height: 17.32,
+                          width: 9.97.sp,
+                          height: 17.32.sp,
                           child: IconButton(
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
@@ -240,8 +241,8 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                             },
                             icon: SvgPicture.asset(
                               'assets/icons/right_arrow.svg',
-                              width: 9.97,
-                              height: 17.32,
+                              width: 9.97.sp,
+                              height: 17.32.sp,
                             ),
                           ),
                         )
@@ -252,9 +253,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               ),
             ),
             Container(
-              height: 268,
-              width: 311,
-              margin: EdgeInsets.only(left: 16, right: 16, top: 4),
+              height: 268.h,
+              width: 311.w,
+              margin: EdgeInsets.only(left: 16.w, right: 16.w, top: 4.h),
               child: SfDateRangePicker(
                 headerHeight: 0,
                 todayHighlightColor: Colors.transparent,
@@ -288,7 +289,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                     textStyle: TextStyle(
                       fontFamily: 'Rubik',
                       fontWeight: FontWeight.w600,
-                      fontSize: 13,
+                      fontSize: 13.sp,
                       height: (18/13),
                       letterSpacing: -0.08,
                       color: Color(0x3C3C434D)
@@ -299,7 +300,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                   textStyle: TextStyle(
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     height: (24/20),
                     letterSpacing: 0.38,
                     color: Color(0xFF4DABEE)
@@ -307,7 +308,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                   todayTextStyle: TextStyle(
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     height: (24/20),
                     letterSpacing: 0.38,
                     color: Color(0xFF4DABEE)
@@ -315,7 +316,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                   disabledDatesTextStyle: TextStyle(
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     height: (24/20),
                     letterSpacing: 0.38,
                     color: Color(0x3C3C434D)
@@ -332,7 +333,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                 selectionTextStyle: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w600,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   height: (24/20),
                   letterSpacing: 0.38,
                   color: Colors.white
@@ -340,7 +341,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                 rangeTextStyle: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w400,
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   height: (24/20),
                   letterSpacing: 0.38,
                   color: Color(0xFF4DABEE)
@@ -353,16 +354,16 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               ),
             ),
             Container(
-              width: 311,
-              height: 44,
-              margin: EdgeInsets.only(left: 16, right: 16),
+              width: 311.w,
+              height: 44.h,
+              margin: EdgeInsets.only(left: 16.w, right: 16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 156,
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 156.w,
+                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
                     child: Text(
                       widget.mode == 'single'
                       ? 'Время'
@@ -370,7 +371,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         height: (24/20),
                         letterSpacing: 0.38,
                         color: Color(0xFF404040)
@@ -378,9 +379,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                     ),
                   ),
                   Container(
-                    width: 155,
-                    height: 44,
-                    padding: EdgeInsets.only(top: 4, bottom: 4),
+                    width: 155.w,
+                    height: 44.h,
+                    padding: EdgeInsets.only(top: 4.h, bottom: 4.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,22 +403,22 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
             widget.mode == 'single'
             ? SizedBox()
             : Container(
-              width: 311,
-              height: 44,
-              margin: EdgeInsets.only(left: 16, right: 16),
+              width: 311.w,
+              height: 44.h,
+              margin: EdgeInsets.only(left: 16.w, right: 16.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    width: 156,
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    width: 156.w,
+                    padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
                     child: Text(
                       'Время конца',
                       style: TextStyle(
                         fontFamily: 'Rubik',
                         fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         height: (24/20),
                         letterSpacing: 0.38,
                         color: Color(0xFF404040)
@@ -425,9 +426,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                     ),
                   ),
                   Container(
-                    width: 155,
-                    height: 44,
-                    padding: EdgeInsets.only(top: 4, bottom: 4),
+                    width: 155.w,
+                    height: 44.h,
+                    padding: EdgeInsets.only(top: 4.h, bottom: 4.h),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,

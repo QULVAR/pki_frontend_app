@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:pki_frontend_app/main.dart';
 
 
 class DropDownButton extends StatefulWidget {
@@ -35,12 +36,12 @@ class DropDownButtonState extends State<DropDownButton> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      width: 342,
-      height: 48,
+      width: 342.w,
+      height: 48.h,
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.sp),
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -57,7 +58,7 @@ class DropDownButtonState extends State<DropDownButton> {
             style: TextStyle(
               fontFamily: 'Rubik',
               fontWeight: FontWeight.w300,
-              fontSize: 16,
+              fontSize: 16.sp,
               color: Color.fromARGB(255, 167, 167, 167),
             ),
           ),
@@ -67,7 +68,8 @@ class DropDownButtonState extends State<DropDownButton> {
               program,
               style: TextStyle(
                 fontFamily: 'Rubik',
-                fontSize: 16,
+                fontSize: 16.sp,
+                height: 1,
                 fontWeight: FontWeight.w400
               ),
             ),
@@ -81,22 +83,22 @@ class DropDownButtonState extends State<DropDownButton> {
             });
           },
           buttonStyleData: ButtonStyleData(
-            padding: EdgeInsets.only(right: 12),
-            height: 56,
+            padding: EdgeInsets.only(right: 12.w),
+            height: 56.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderRadius: BorderRadius.all(Radius.circular(8.sp)),
             ),
           ),
-          dropdownStyleData: const DropdownStyleData(
+          dropdownStyleData: DropdownStyleData(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(12)),
+              borderRadius: BorderRadius.all(Radius.circular(8.sp)),
               color: Colors.white,
             ),
             offset: Offset(0, -4),
           ),
-          iconStyleData: const IconStyleData(
+          iconStyleData: IconStyleData(
             icon: Icon(Icons.keyboard_arrow_down),
-            iconSize: 24,
+            iconSize: 24.sp,
           ),
         ),
       ),

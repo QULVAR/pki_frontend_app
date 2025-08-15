@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pki_frontend_app/main.dart';
 
 import '../../scripts/formatting.dart';
 import 'statistics_numbers_generator.dart';
@@ -16,14 +17,14 @@ class StatisticsDataViewer extends StatefulWidget {
 
 class StatisticsDataViewerState extends State<StatisticsDataViewer> {
   List<Color> backgroundColorNumber = [Color(0xFFF8FCFF), Colors.white];
-  bool flag = true;
+  bool flag = false;
   double _height = 0;
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     if (widget.data.isEmpty) {
-      _height = 150;
+      _height = 270;
     }
     else {
       _height = (widget.data['getAllTransactionsWithDiscount']['transactionStatByCustomer'].length * 30).toDouble();
@@ -38,26 +39,26 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
           style: TextStyle(
             fontFamily: 'Rubik',
             fontWeight: FontWeight.w400,
-            fontSize: 16,
+            fontSize: 16.sp,
             height: (20/16),
             letterSpacing: 0,
             color: Color(0xFF404040)
           ),
         ),
-        SizedBox(height: 24,),
+        SizedBox(height: 24.h,),
         Row(
           children: [
             Container(
-              width: 130,
-              height: 40,
-              padding: EdgeInsets.only(top: 4, left: 4, bottom: 22),
+              width: 130.w,
+              height: 40.h,
+              padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 22.h),
               child: Text(
                 'Номер',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w300,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   height: 1,
                   letterSpacing: 0,
                   color: Color(0xFF404040)
@@ -66,7 +67,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
             ),
             SizedBox(
               width: 1,
-              height: 40,
+              height: 40.h,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Color(0xFFF2F2F2)
@@ -74,16 +75,16 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               ),
             ),
             Container(
-              width: 122,
-              height: 40,
-              padding: EdgeInsets.only(top: 4, left: 4, bottom: 8, right: 3),
+              width: 122.w,
+              height: 40.h,
+              padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 8.h, right: 3.w),
               child: Text(
                 'Общее потребление энергии, кВт⋅ч',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w300,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   height: 1,
                   letterSpacing: 0,
                   color: Color(0xFF404040)
@@ -92,7 +93,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
             ),
             SizedBox(
               width: 1,
-              height: 40,
+              height: 40.h,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Color(0xFFF2F2F2)
@@ -100,16 +101,16 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               ),
             ),
             Container(
-              width: 88,
-              height: 40,
-              padding: EdgeInsets.only(top: 4, left: 4, bottom: 8, right: 4),
+              width: 87.w,
+              height: 40.h,
+              padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 8.h, right: 4.w),
               child: Text(
                 'Общая стоимость',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w300,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   height: 1,
                   letterSpacing: 0,
                   color: Color(0xFF404040)
@@ -119,8 +120,8 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
           ],
         ),
         SizedBox(
-          width: 342,
-          height: 150,
+          width: 342.w,
+          height: 270.h,
           child: SingleChildScrollView(
             controller: _scrollController,
             child: Column(
@@ -128,32 +129,33 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               children: [
                 SizedBox(
                   child: Container(
-                    height: _height,
+                    height: _height.h,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(6),
+                      borderRadius: BorderRadius.circular(6.sp),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: widget.data.isEmpty
                       ? [
                         Container(
-                          width: 342,
-                          height: 30,
-                          padding: EdgeInsets.only(top: 4, left: 4, bottom: 4, right: 4),
+                          width: 342.w,
+                          height: 30.h,
+                          padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 4.h, right: 4.w),
                           child: Text(
                             'Нет данных',
                             style: TextStyle(
                               fontFamily: 'Rubik',
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               height: 1,
                               letterSpacing: 0,
                               color: Color(0xFF404040)
                             ),
                             textAlign: TextAlign.center,
                           ),
-                        )
+                        ),
+                        SizedBox(height: 240.h,)
                       ]
                       : getNumbersFromData(widget.data, flag, backgroundColorNumber)
                     )
@@ -164,7 +166,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
           ),
         ),
         SizedBox(
-          width: 342,
+          width: 342.w,
           height: 1,
           child: DecoratedBox(
             decoration: BoxDecoration(
@@ -175,19 +177,21 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
         Row(
           children: [
             Container(
-              width: 130,
-              height: 29,
+              width: 130.w,
+              height: 29.h,
               decoration: BoxDecoration(
-                color: backgroundColorNumber[flag ? 1 : 0]
+                color: widget.data.isNotEmpty
+                      ? backgroundColorNumber[flag ? 0 : 1]
+                      : backgroundColorNumber[1]
               ),
-              padding: EdgeInsets.only(top: 7, left: 4, bottom: 8),
+              padding: EdgeInsets.only(top: 7.h, left: 4.w, bottom: 8.h),
               child: Text(
                 'Итого',
                 textAlign: TextAlign.start,
                 style: TextStyle(
                   fontFamily: 'Rubik',
                   fontWeight: FontWeight.w500,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                   height: 1,
                   letterSpacing: 0,
                   color: Color(0xFF404040)
@@ -196,7 +200,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
             ),
             SizedBox(
               width: 1,
-              height: 29,
+              height: 29.h,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Color(0xFFF2F2F2)
@@ -204,12 +208,14 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               ),
             ),
             Container(
-              width: 122,
-              height: 29,
+              width: 122.w,
+              height: 29.h,
               decoration: BoxDecoration(
-                color: backgroundColorNumber[flag ? 1 : 0]
+                color: widget.data.isNotEmpty
+                      ? backgroundColorNumber[flag ? 0 : 1]
+                      : backgroundColorNumber[1]
               ),
-              padding: EdgeInsets.only(top: 3, left: 4, bottom: 8, right: 3),
+              padding: EdgeInsets.only(top: 3.h, left: 4.w, bottom: 8.h, right: 3.w),
               child: Center(
                 child: Text(
                   widget.data.isEmpty ? numbersFormat(0)
@@ -218,7 +224,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     height: 1,
                     letterSpacing: 0,
                     color: Color(0xFF404040)
@@ -228,7 +234,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
             ),
             SizedBox(
               width: 1,
-              height: 29,
+              height: 29.h,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   color: Color(0xFFF2F2F2)
@@ -236,12 +242,14 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               ),
             ),
             Container(
-              width: 88,
-              height: 29,
+              width: 87.w,
+              height: 29.h,
               decoration: BoxDecoration(
-                color: backgroundColorNumber[flag ? 1 : 0]
+                color: widget.data.isNotEmpty
+                      ? backgroundColorNumber[flag ? 0 : 1]
+                      : backgroundColorNumber[1]
               ),
-              padding: EdgeInsets.only(top: 3, left: 4, bottom: 8, right: 4),
+              padding: EdgeInsets.only(top: 3.h, left: 4.w, bottom: 8.h, right: 4.w),
               child: Center(
                 child: Text(
                   widget.data.isEmpty ? '₽ ${numbersFormat(0)}'
@@ -250,7 +258,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
                   style: TextStyle(
                     fontFamily: 'Rubik',
                     fontWeight: FontWeight.w500,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     height: 1,
                     letterSpacing: 0,
                     color: Color(0xFF404040)
