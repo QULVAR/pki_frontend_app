@@ -147,7 +147,27 @@ class HomePageState extends State<HomePage> {
               appBar: getAppBar(_selected),
               body: GestureDetector(
                 onTap: () => FocusScope.of(context).unfocus(),
-                child: Stack(children: _pages),
+                onHorizontalDragEnd: (details) {
+                  if (details.primaryVelocity != null) {
+                    if (details.primaryVelocity! < 0) {
+                      if (_selected != 3) {
+                        _onTap(_selected + 1);
+                      }
+                    } else if (details.primaryVelocity! > 0) {
+                      if (_selected != 0) {
+                        _onTap(_selected - 1);
+                      }
+                    }
+                  }
+                },
+                child: Container(
+                  width: 390.w,
+                  height: 844.h,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent
+                  ),
+                  child: Stack(children: _pages),
+                )
               ),
               bottomNavigationBar: BottomNavigationBarCustom(
                 currentIndex: _selected,

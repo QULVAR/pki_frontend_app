@@ -94,7 +94,7 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
                   width: 259.w,
                   height: 48.h,
                   child: TextField(
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.number,
                     controller: _phoneController,
                     inputFormatters: [_phoneFormatter],
                     decoration: InputDecoration(
