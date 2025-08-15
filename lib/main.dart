@@ -11,7 +11,6 @@ void main() async {
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    // DeviceOrientation.portraitDown, // если хочешь разрешить «вверх ногами»
   ]);
 
   runApp(const MyApp());
