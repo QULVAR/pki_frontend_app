@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:math' as math;
 
 import 'screens/login.dart';
 import 'screens/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    // DeviceOrientation.portraitDown, // если хочешь разрешить «вверх ногами»
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -34,7 +42,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  bool _authorized = false;
+  bool _authorized = true;
   final _loginPageKey = GlobalKey<LoginPageState>();
   final _homePageKey = GlobalKey<HomePageState>();
 
