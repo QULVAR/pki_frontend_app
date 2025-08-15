@@ -34,7 +34,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  bool _authorized = true;
+  bool _authorized = false;
   final _loginPageKey = GlobalKey<LoginPageState>();
   final _homePageKey = GlobalKey<HomePageState>();
 
