@@ -13,16 +13,6 @@
 <a class="figma" href="https://www.figma.com/design/zTjna7FfcwaNr1ye0HJm86/ЛК-ЮЛ---практика?node-id=0-1&p=f&t=MN5nwSbb0BBSVvcu-0">
   <img src="figma.png" width=50%>
 </a>
-<style>
-  .figma {
-    display: flex;
-    justify-content: center;
-  }
-
-  .figma img {
-    display: block;
-  }
-</style>
 
 ---
 
