@@ -35,6 +35,7 @@ class HomePageState extends State<HomePage> {
 
   late double _top;
   int _teleportSeq = 0;
+  bool _isAnimating = false;
 
   @override
   void initState() {
@@ -63,48 +64,67 @@ class HomePageState extends State<HomePage> {
   }
 
   Future<void> _onTap(int index) async {
-    if (index == _selected) return;
+    if (index == _selected || _isAnimating) return;
     final previousIndex = _selected;
-    setState(() {
-      _selected = index;
-    });
     final w = MediaQuery.of(context).size.width;
     const animDuration = Duration(milliseconds: 300);
     final mySeq = ++_teleportSeq;
-    final forward = _selected > previousIndex;
-    switch (previousIndex) {
+    final forward = index > previousIndex;
+    final dir = forward ? 1 : -1;
+    _isAnimating = true;
+    switch (index) {
       case 0:
-        _addProgramPageKey.currentState?.moveToX(forward ? -w : w);
+        _addProgramPageKey.currentState?.moveToXWithoutAnimation(dir * w);
         break;
       case 1:
-        _statisticsPageKey.currentState?.moveToX(forward ? -w : w);
+        _statisticsPageKey.currentState?.moveToXWithoutAnimation(dir * w);
         break;
       case 2:
-        _programControlPageKey.currentState?.moveToX(forward ? -w : w);
+        _programControlPageKey.currentState?.moveToXWithoutAnimation(dir * w);
         break;
       case 3:
-        _menuPageKey.currentState?.moveToX(forward ? -w : w);
+        _menuPageKey.currentState?.moveToXWithoutAnimation(dir * w);
         break;
     }
-    switch (_selected) {
-      case 0:
-        _addProgramPageKey.currentState?.moveToX(0);
-        break;
-      case 1:
-        _statisticsPageKey.currentState?.moveToX(0);
-        break;
-      case 2:
-        _programControlPageKey.currentState?.moveToX(0);
-        break;
-      case 3:
-        _menuPageKey.currentState?.moveToX(0);
-        break;
-    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      switch (previousIndex) {
+        case 0:
+          _addProgramPageKey.currentState?.moveToX(-dir * w);
+          break;
+        case 1:
+          _statisticsPageKey.currentState?.moveToX(-dir * w);
+          break;
+        case 2:
+          _programControlPageKey.currentState?.moveToX(-dir * w);
+          break;
+        case 3:
+          _menuPageKey.currentState?.moveToX(-dir * w);
+          break;
+      }
+      switch (index) {
+        case 0:
+          _addProgramPageKey.currentState?.moveToX(0);
+          break;
+        case 1:
+          _statisticsPageKey.currentState?.moveToX(0);
+          break;
+        case 2:
+          _programControlPageKey.currentState?.moveToX(0);
+          break;
+        case 3:
+          _menuPageKey.currentState?.moveToX(0);
+          break;
+      }
+      setState(() {
+        _selected = index;
+      });
+    });
     await Future.delayed(animDuration);
-    if (!mounted || previousIndex != _selected || _teleportSeq != mySeq) {
+    if (!mounted || _teleportSeq != mySeq) {
+      _isAnimating = false;
       return;
     }
-
     switch (_selected) {
       case 0:
         _statisticsPageKey.currentState?.moveToXWithoutAnimation(w);
@@ -127,6 +147,7 @@ class HomePageState extends State<HomePage> {
         _programControlPageKey.currentState?.moveToXWithoutAnimation(-w);
         break;
     }
+    _isAnimating = false;
   }
 
   @override
