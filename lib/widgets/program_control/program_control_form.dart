@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
 
 import '../global/fields and alerts/drop_down_button.dart';
+import '../../../scripts/text_styles.dart';
+import '../../../scripts/resizer.dart';
 
 
 class ProgramControlForm extends StatefulWidget {
@@ -30,25 +31,12 @@ class ProgramControlFormState extends State<ProgramControlForm> {
       children: [
         Text(
           'Управление существующими программами',
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w400,
-            fontSize: 20.sp,
-            height: 1,
-            letterSpacing: 0,
-            color: Color(0xFF404040)
-          ),
+          style: context.addProgramFormHeader(Color(0xFF404040)),
         ),
         SizedBox(height: 24.h),
         Text(
           'Выберите программу:',
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w300,
-            fontSize: 14.sp,
-            height: 1.0,
-            letterSpacing: 0.0,
-          ),
+          style: AppText.programControlFormText,
           textAlign: TextAlign.start,
         ),
         SizedBox(height: 8.h),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
 
 import '../widgets/global/bottom_navigation_bar.dart';
 import '../widgets/global/app_bar.dart';

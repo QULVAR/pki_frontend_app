@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 class PhoneInputWidget extends StatefulWidget {
   final ValueChanged<bool> onFilledChanged;
@@ -102,22 +104,10 @@ class PhoneInputWidgetState extends State<PhoneInputWidget> {
                       isCollapsed: true,
                       contentPadding: EdgeInsets.only(bottom: 0),
                       hintText: '+7 (___) ___-__-__',
-                      hintStyle: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w300,
-                        fontSize: 16.sp,
-                        color: Color.fromARGB(255, 167, 167, 167),
-                        letterSpacing: 0.0,
-                      ),
+                      hintStyle: AppText.dropDownButtonPlaceholder,
                       hintFadeDuration: Duration(milliseconds: 300)
                     ),
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontWeight: FontWeight.w300,
-                      fontSize: 16.sp,
-                      color: Colors.black,
-                      letterSpacing: 0.0,
-                    ),
+                    style: context.dropDownButtonPlaceholder(Colors.black),
                   ),
                 ),
               ],

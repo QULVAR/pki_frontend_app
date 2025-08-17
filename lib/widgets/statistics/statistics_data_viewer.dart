@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
 
-import '../../scripts/formatting.dart';
+
 import 'statistics_numbers_generator.dart';
+import '../../../scripts/text_styles.dart';
+import '../../../scripts/resizer.dart';
+import '../../scripts/formatting.dart';
 
 
 class StatisticsDataViewer extends StatefulWidget {
@@ -36,14 +38,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
         Text(
           'Данные о пользователях',
           textAlign: TextAlign.start,
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w400,
-            fontSize: 16.sp,
-            height: (20/16),
-            letterSpacing: 0,
-            color: Color(0xFF404040)
-          ),
+          style: context.menuBody16W400(Color(0xFF404040)),
         ),
         SizedBox(height: 24.h,),
         Row(
@@ -55,14 +50,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               child: Text(
                 'Номер',
                 textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: AppText.programControlDataViewerText,
               ),
             ),
             SizedBox(
@@ -81,14 +69,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               child: Text(
                 'Общее потребление энергии, кВт⋅ч',
                 textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: AppText.programControlDataViewerText,
               ),
             ),
             SizedBox(
@@ -107,14 +88,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               child: Text(
                 'Общая стоимость',
                 textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: AppText.programControlDataViewerText,
               ),
             ),
           ],
@@ -144,14 +118,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
                           padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 4.h, right: 4.w),
                           child: Text(
                             'Нет данных',
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16.sp,
-                              height: 1,
-                              letterSpacing: 0,
-                              color: Color(0xFF404040)
-                            ),
+                            style: context.programControlDataViewerText(FontWeight.w400, 16.sp),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -188,14 +155,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
               child: Text(
                 'Итого',
                 textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: context.programControlDataViewerText(FontWeight.w500),
               ),
             ),
             SizedBox(
@@ -221,14 +181,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
                   widget.data.isEmpty ? numbersFormat(0)
                   : numbersFormat(widget.data['getAllTransactionsWithDiscount']['allConsumptionWh'].toDouble()),
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                    height: 1,
-                    letterSpacing: 0,
-                    color: Color(0xFF404040)
-                  ),
+                  style: context.programControlDataViewerText(FontWeight.w500),
                 ),
               ),
             ),
@@ -255,14 +208,7 @@ class StatisticsDataViewerState extends State<StatisticsDataViewer> {
                   widget.data.isEmpty ? '₽ ${numbersFormat(0)}'
                   : '₽ ${numbersFormat(widget.data['getAllTransactionsWithDiscount']['allPrice'].toDouble())}',
                   textAlign: TextAlign.start,
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12.sp,
-                    height: 1,
-                    letterSpacing: 0,
-                    color: Color(0xFF404040)
-                  ),
+                  style: context.programControlDataViewerText(FontWeight.w500),
                 ),
               ),
             ),

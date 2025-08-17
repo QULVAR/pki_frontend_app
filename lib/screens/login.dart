@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
+import '../../scripts/text_styles.dart';
 
 
 import '../widgets/login/login_form.dart';
@@ -74,14 +75,7 @@ class LoginPageState extends State<LoginPage> {
                           Text(
                             'Личный кабинет для юр. лиц',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontFamily: 'Rubik',
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18.sp,
-                              height: (22/18),
-                              letterSpacing: 0,
-                              color: Color(0xFF404040)
-                            ),
+                            style: AppText.loginHeader
                           ),
                           SizedBox(height: 151.h),
                           LoginForm(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
 
+import '../../../scripts/text_styles.dart';
 import '../../scripts/formatting.dart';
+import '../../../scripts/resizer.dart';
+
 
 List<Widget> getNumbersFromData(Map<String, dynamic> data, bool flagInput, List<Color> backgroundColorNumber) {
   bool flag = flagInput;
@@ -21,14 +23,7 @@ List<Widget> getNumbersFromData(Map<String, dynamic> data, bool flagInput, List<
           padding: EdgeInsets.only(top: 8.h, left: 4.w, bottom: 11.h),
           child: Text(
             phoneFormat(user['phoneNumber']),
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w400,
-              fontSize: 12.sp,
-              height: 1,
-              letterSpacing: 0,
-              color: Color(0xFF404040)
-            ),
+            style: AppText.statisticsNumberGeneratorFields,
           ),
         ),
         SizedBox(
@@ -53,14 +48,7 @@ List<Widget> getNumbersFromData(Map<String, dynamic> data, bool flagInput, List<
           child: Center(
             child: Text(
               numbersFormat(user['stat']['allConsumptionWh'].toDouble()),
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 12.sp,
-                height: 1,
-                letterSpacing: 0,
-                color: Color(0xFF404040)
-              ),
+              style: AppText.statisticsNumberGeneratorFields
             ),
           ),
         ),
@@ -86,14 +74,7 @@ List<Widget> getNumbersFromData(Map<String, dynamic> data, bool flagInput, List<
           child: Center(
             child: Text(
               '₽ ${numbersFormat(user['stat']['allPrice'].toDouble())}',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 12.sp,
-                height: 1,
-                letterSpacing: 0,
-                color: Color(0xFF404040)
-              ),
+              style: AppText.statisticsNumberGeneratorFields
             ),
           ),
         ),

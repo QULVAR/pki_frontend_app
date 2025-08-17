@@ -1,10 +1,11 @@
-import 'package:pki_frontend_app/main.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
 import 'calendar_time_pop_up.dart';
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 
 class DatePickerCalendar extends StatefulWidget {
@@ -185,14 +186,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       headerText.isEmpty
                       ? getCapitalizedMonth(DateTime.now())
                       : headerText,
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20.sp,
-                        height: (24/20),
-                        letterSpacing: 0,
-                        color: Color(0xFF4DABEE)
-                      ),
+                      style: context.addProgramDialog20W500(24/20),
                     ),
                   ),
                   Container(
@@ -286,41 +280,13 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                   dayFormat: 'EEE',
                   enableSwipeSelection: true,
                   viewHeaderStyle: DateRangePickerViewHeaderStyle(
-                    textStyle: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13.sp,
-                      height: (18/13),
-                      letterSpacing: -0.08,
-                      color: Color(0x3C3C434D)
-                    )
+                    textStyle: AppText.calendarPopUpViewHeader
                   )
                 ),
                 monthCellStyle: DateRangePickerMonthCellStyle(
-                  textStyle: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20.sp,
-                    height: (24/20),
-                    letterSpacing: 0.38,
-                    color: Color(0xFF4DABEE)
-                  ),
-                  todayTextStyle: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20.sp,
-                    height: (24/20),
-                    letterSpacing: 0.38,
-                    color: Color(0xFF4DABEE)
-                  ),
-                  disabledDatesTextStyle: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20.sp,
-                    height: (24/20),
-                    letterSpacing: 0.38,
-                    color: Color(0x3C3C434D)
-                  ),
+                  textStyle: context.calendarPopUpViewNumbers(Color(0xFF4DABEE)),
+                  todayTextStyle: context.calendarPopUpViewNumbers(Color(0xFF4DABEE)),
+                  disabledDatesTextStyle: context.calendarPopUpViewNumbers(Color(0x3C3C434D))
                 ),
                 minDate: DateTime(1970),
                 maxDate: DateTime.now(),
@@ -330,22 +296,8 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                 selectionColor: Color(0xFF4DABEE),
                 startRangeSelectionColor: Color(0xFF4DABEE),
                 endRangeSelectionColor: Color(0xFF4DABEE),
-                selectionTextStyle: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20.sp,
-                  height: (24/20),
-                  letterSpacing: 0.38,
-                  color: Colors.white
-                ),
-                rangeTextStyle: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20.sp,
-                  height: (24/20),
-                  letterSpacing: 0.38,
-                  color: Color(0xFF4DABEE)
-                ),
+                selectionTextStyle: context.calendarPopUpViewNumbers(Colors.white, FontWeight.w600),
+                rangeTextStyle: context.calendarPopUpViewNumbers(Color(0xFF4DABEE)),
                 monthFormat: 'MMMM',
                 extendableRangeSelectionDirection: ExtendableRangeSelectionDirection.both,
                 selectionMode: widget.mode == 'single'
@@ -368,14 +320,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       widget.mode == 'single'
                       ? 'Время'
                       : 'Время начала',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.sp,
-                        height: (24/20),
-                        letterSpacing: 0.38,
-                        color: Color(0xFF404040)
-                      ),
+                      style: context.calendarPopUpViewNumbers(Color(0xFF404040)),
                     ),
                   ),
                   Container(
@@ -415,14 +360,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                     padding: EdgeInsets.only(top: 10.h, bottom: 10.h),
                     child: Text(
                       'Время конца',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 20.sp,
-                        height: (24/20),
-                        letterSpacing: 0.38,
-                        color: Color(0xFF404040)
-                      ),
+                      style: context.calendarPopUpViewNumbers(Color(0xFF404040)),
                     ),
                   ),
                   Container(

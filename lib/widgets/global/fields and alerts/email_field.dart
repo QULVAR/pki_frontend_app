@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 
 class EmailInputWidget extends StatefulWidget {
@@ -66,24 +68,10 @@ class EmailInputWidgetState extends State<EmailInputWidget> {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'Ваш e-mail',
-          hintStyle: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w300,
-            fontSize: 16.sp,
-            height: (20/16),
-            letterSpacing: 0,
-            color: Color(0xFFA7A7A7)
-          ),
+          hintStyle: context.emailFieldText(Color(0xFFA7A7A7), FontWeight.w300),
           hintFadeDuration: Duration(milliseconds: 300)
         ),
-        style: TextStyle(
-          fontFamily: 'Rubik',
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-          height: (20/16),
-          letterSpacing: 0,
-          color: Color(0xFF404040)
-        ),
+        style: context.emailFieldText(Color(0xFF404040), FontWeight.w400),
         maxLines: 1,
         keyboardType: TextInputType.emailAddress,
       ),

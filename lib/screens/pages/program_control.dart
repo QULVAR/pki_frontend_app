@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
 
 import '../../widgets/program_control/program_control_form.dart';
 import '../../widgets/program_control/program_control_data_viewer.dart';
@@ -64,7 +64,6 @@ class ProgramControlPageState extends State<ProgramControlPage> {
         dataByDescription = readJsonControlData(jsonString);
       });
     }).catchError((err) {
-      print('Error loading $fileName: $err');
       setState(() {
         dataByDescription = {};
       });

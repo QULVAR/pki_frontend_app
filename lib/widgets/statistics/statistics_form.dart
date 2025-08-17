@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pki_frontend_app/main.dart';
 
 import '../global/fields and alerts/date_picker_field.dart';
 import '../global/fields and alerts/calendar_pop_up.dart';
+import '../../../scripts/text_styles.dart';
+import '../../../scripts/resizer.dart';
 
 
 class StatisticsPageForm extends StatefulWidget {
@@ -117,27 +118,13 @@ class StatisticsPageFormState extends State<StatisticsPageForm> {
         Text(
           'Поиск по датам',
           textAlign: TextAlign.start,
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w400,
-            fontSize: 20.sp,
-            height: 1,
-            letterSpacing: 0,
-            color: Color(0xFF404040)
-          ),
+          style: context.addProgramFormHeader(Color(0xFF404040)),
         ),
         SizedBox(height: 24.h,),
         Text(
           'Выберите отрезок',
           textAlign: TextAlign.start,
-          style: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w300,
-            fontSize: 14.sp,
-            height: (18/14),
-            letterSpacing: 0,
-            color: Color(0xFF404040)
-          ),
+          style: AppText.loginFormTex14W300,
         ),
         SizedBox(height: 8.h,),
         AnimatedContainer(
@@ -168,14 +155,7 @@ class StatisticsPageFormState extends State<StatisticsPageForm> {
                       right: true,
                     ),Text(
                       ' - ',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        height: (20/16),
-                        letterSpacing: 0,
-                        color: Color(0xFF404040)
-                      ),
+                      style: context.menuBody16W400(Color(0xFF404040)),
                     ),
                     DatePickerField(
                       key: _datePickerKey2,
@@ -230,14 +210,7 @@ class StatisticsPageFormState extends State<StatisticsPageForm> {
             child: Text(
               'Найти',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 16.sp,
-                height: (20/16),
-                letterSpacing: 0,
-                color: Colors.white
-              ),
+              style: AppText.buttonText16W400,
             ),
           ),
         )

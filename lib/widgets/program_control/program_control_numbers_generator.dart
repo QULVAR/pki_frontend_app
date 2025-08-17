@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pki_frontend_app/main.dart';
 
+import '../../../scripts/text_styles.dart';
 import '../../scripts/formatting.dart';
+import '../../../scripts/resizer.dart';
 
 
 class ProgramControlNumbersGenerator extends StatefulWidget {
@@ -44,14 +45,7 @@ class ProgramControlNumbersGeneratorState extends State<ProgramControlNumbersGen
               padding: EdgeInsets.only(top: 13.5.h, left: 4.w, bottom: 13.5.h),
               child: Text(
                 phoneFormat(user['phoneNumber']),
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: context.dropDownButtonItem(Color(0xFF404040)),
               ),
             ),
             SizedBox(
@@ -79,6 +73,7 @@ class ProgramControlNumbersGeneratorState extends State<ProgramControlNumbersGen
                 onChanged: (val) {
                   setState(() {
                     user['isOn'] = val;
+                    // ignore: avoid_print
                     print("UPDATE NUMBERS isOn = $val WHERE phoneNumber = '${user['phoneNumber']}'");
                   });
                 },

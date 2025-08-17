@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 
 class DatePickerField extends StatefulWidget {
@@ -25,6 +27,31 @@ class DatePickerFieldState extends State<DatePickerField> {
   );
   DateTime? selectedDate;
   bool filledField = false;
+  double _textWidth = 0.0;
+  double _hintWidth = 0.0;
+
+  double _measureTextWidth(String text, TextStyle style, TextDirection td) {
+    final tp = TextPainter(
+      text: TextSpan(text: text, style: style),
+      textDirection: td,
+      maxLines: 1,
+    )..layout(minWidth: 0, maxWidth: double.infinity);
+    return tp.size.width;
+  }
+
+  void _recalcMetrics() {
+    final style = context.menuBody16W400(Color(0xFF404040));
+    final td = widget.right ? TextDirection.rtl : TextDirection.ltr;
+
+    final text = _controller.text;
+    _textWidth = _measureTextWidth(text, style, td);
+  }
+
+  void _recalcHintWidth() {
+    final style = context.menuBody16W400(Color(0xFFA7A7A7));
+    final td = widget.right ? TextDirection.rtl : TextDirection.ltr;
+    _hintWidth = _measureTextWidth('дд.мм.гггг чч:мм', style, td);
+  }
 
   @override
   void initState() {
@@ -81,6 +108,9 @@ class DatePickerFieldState extends State<DatePickerField> {
               int.parse(maskedTimeSplitted[0]),
               int.parse(maskedTimeSplitted[1])
             );
+            if (candidate.isAfter(DateTime.now())) {
+              candidate = DateTime.now();
+            }
             if (!(candidate.year == int.parse(maskedDateSplitted[2])
                 && candidate.month == int.parse(maskedDateSplitted[1])
                 && candidate.day == int.parse(maskedDateSplitted[0])
@@ -114,7 +144,19 @@ class DatePickerFieldState extends State<DatePickerField> {
         );
         _controller.value = formatted;
       }
+      _recalcMetrics();
     });
+    _recalcHintWidth();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _recalcMetrics());
+  }
+
+  @override
+  void didUpdateWidget(covariant DatePickerField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.right != widget.right) {
+      _recalcHintWidth();
+      WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    }
   }
 
   void clear() {
@@ -154,10 +196,16 @@ class DatePickerFieldState extends State<DatePickerField> {
 
   @override
   Widget build(BuildContext context) {
+    late final double targetWidth;
+    if (_hintWidth >= _textWidth) {
+      targetWidth = _hintWidth;
+    } else {
+      targetWidth = _textWidth + 1.5.sp;
+    }
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 100),
       curve: Curves.easeInOut,
-      width: 141.w,
+      width: targetWidth,
       height: 48.h,
       alignment: Alignment.center,
       child: TextField(
@@ -167,26 +215,13 @@ class DatePickerFieldState extends State<DatePickerField> {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'дд.мм.гггг чч:мм',
-          hintStyle: TextStyle(
-            fontFamily: 'Rubik',
-            fontWeight: FontWeight.w400,
-            fontSize: 16.sp,
-            height: (20/16),
-            letterSpacing: 0,
-            color: Color(0xFFA7A7A7)
-          ),
+          hintStyle: context.menuBody16W400(Color(0xFFA7A7A7)),
           hintFadeDuration: Duration(milliseconds: 300),
-          hintTextDirection: widget.right ? TextDirection.rtl : TextDirection.ltr
+          hintTextDirection: widget.right ? TextDirection.rtl : TextDirection.ltr,
+          isCollapsed: true,
+          contentPadding: EdgeInsets.zero,
         ),
-        style: TextStyle(
-          fontFamily: 'Rubik',
-          fontWeight: FontWeight.w400,
-          fontSize: 16.sp,
-          height: (20/16),
-          letterSpacing: 0,
-          color: Color(0xFF404040)
-        ),
-        textAlign: (selectedDate != null || !filledField) && widget.right ? TextAlign.right : TextAlign.left,
+        style: context.menuBody16W400(Color(0xFF404040)),
       )
     );
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
 
 import '../../widgets/add_program/add_program_form.dart';
 import '../../widgets/add_program/how_it_works.dart';

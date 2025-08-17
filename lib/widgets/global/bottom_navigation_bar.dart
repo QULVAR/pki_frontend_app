@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+
 
 class BottomNavigationBarCustom extends StatelessWidget {
   final int currentIndex;

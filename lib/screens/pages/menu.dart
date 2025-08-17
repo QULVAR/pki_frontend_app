@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
+import '../../scripts/text_styles.dart';
 
 import '../../widgets/menu/menu_show_dialog.dart';
 
@@ -75,14 +76,7 @@ class MenuPageState extends State<MenuPage> {
               Center(
                 child:Text(
                   'Личный кабинет для юр. лиц',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
-                    height: (20/16),
-                    letterSpacing: 0,
-                    color: Color(0xFF777777)
-                  )
+                  style: AppText.menuBody16W400
                 )
               ),
               SizedBox(height: 24.h),
@@ -98,38 +92,17 @@ class MenuPageState extends State<MenuPage> {
               SizedBox(height: 24.h,),
               Text(
                 'ООО «ПКИ»',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.sp,
-                  height: (20/16),
-                  letterSpacing: 0,
-                  color: Color(0xFF777777),
-                ),
+                style: AppText.menuBody16W400,
               ),
               SizedBox(height: 12.h),
               Text(
                 '№ 296-ДХ от 11.09.2023',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                  height: (20/16),
-                  letterSpacing: 0,
-                  color: Color(0xFF777777),
-                ),
+                style: AppText.menuBody16W400
               ),
               SizedBox(height: 307.h,),
               Text(
                 'Версия: 2.0',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040),
-                ),
+                style: AppText.menuBody14W400
               ),
               SizedBox(height: 16.h,),
               TextButton(
@@ -148,15 +121,7 @@ class MenuPageState extends State<MenuPage> {
                   children: [
                     Text(
                       'Выйти',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        fontStyle: FontStyle.normal,
-                        height: (20/16),
-                        letterSpacing: 0.0,
-                        color: Color(0xFF3E4E5E),
-                      ),
+                      style: context.menuBody16W400(Color(0xFF3E4E5E)),
                     ),
                     SizedBox(width: 10.w),
                     SvgPicture.asset(

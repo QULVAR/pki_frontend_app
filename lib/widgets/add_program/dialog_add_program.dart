@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
+import '../../scripts/text_styles.dart';
 
 
 void showSuccessDialog(BuildContext context, VoidCallback onResetForm) {
@@ -35,13 +36,7 @@ void showSuccessDialog(BuildContext context, VoidCallback onResetForm) {
                 SizedBox(height: 16.h),
                 Text(
                   'Успешно!',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    height: 1,
-                    color: Color(0xFF4DABEE),
-                  ),
+                  style: AppText.addProgramDialog20W500,
                 ),
                 SizedBox(height: 18.h),
                 SizedBox(
@@ -50,14 +45,7 @@ void showSuccessDialog(BuildContext context, VoidCallback onResetForm) {
                   child: Text(
                     'Пользователь успешно добавлен в\u00A0программу',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontSize: 14.sp,
-                      height: (18/14),
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF777777),
-                    ),
+                    style: AppText.addProgramDialo14W400
                   ),
                 ),
                 SizedBox(height: 46.h),
@@ -77,15 +65,7 @@ void showSuccessDialog(BuildContext context, VoidCallback onResetForm) {
                   ),
                   child: Text(
                     'Продолжить',
-                    style: TextStyle(
-                      fontFamily: 'Rubik',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16.sp,
-                      fontStyle: FontStyle.normal,
-                      height: 1.25,
-                      letterSpacing: 0.0,
-                      color: Colors.white,
-                    ),
+                    style: context.menuBody16W400(Colors.white),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -99,7 +79,7 @@ void showSuccessDialog(BuildContext context, VoidCallback onResetForm) {
       final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
       return SlideTransition(
         position: Tween<Offset>(
-          begin: const Offset(0, 1), // снизу экрана
+          begin: const Offset(0, 1),
           end: Offset.zero,
         ).animate(curved),
         child: FadeTransition(

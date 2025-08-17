@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
 
 import '../../widgets/statistics/statistics_form.dart';
 import '../../widgets/statistics/statistics_data_viewer.dart';
@@ -44,7 +44,9 @@ class StatisticsPageState extends State<StatisticsPage> {
   }
 
   void findInfo(List<DateTime> values) {
+    // ignore: avoid_print
     print(values[0]);
+    // ignore: avoid_print
     print(values[1]);
     setState(() {
       loadTransactionData();

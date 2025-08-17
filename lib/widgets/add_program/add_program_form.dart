@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+import '../../scripts/resizer.dart';
+import '../../scripts/text_styles.dart';
 
 import '../global/fields and alerts/phone_input.dart';
 import '../global/fields and alerts/drop_down_button.dart';
@@ -46,26 +47,13 @@ class AddProgramFormState extends State<AddProgramForm> {
           children: [
             Text(
               'Добавление пользователя в\u00A0программу',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
-                fontSize: 20.sp,
-                height: 1,
-                letterSpacing: 0.0,
-              ),
+              style: AppText.addProgramFormHeader,
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 26.h),
             Text(
               'Введите номер телефона:',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w300,
-                fontSize: 14.sp,
-                height: 1.0,
-                letterSpacing: 0.0,
-              ),
+              style: AppText.addProgramFormFieldsText,
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 8.h),
@@ -73,13 +61,7 @@ class AddProgramFormState extends State<AddProgramForm> {
             SizedBox(height: 18.h),
             Text(
               'Выберите программу:',
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w300,
-                fontSize: 14.sp,
-                height: 1.0,
-                letterSpacing: 0.0,
-              ),
+              style: AppText.addProgramFormFieldsText,
               textAlign: TextAlign.start,
             ),
             SizedBox(height: 12.h),
@@ -109,15 +91,7 @@ class AddProgramFormState extends State<AddProgramForm> {
           ),
           child: Text(
             'Применить',
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.sp,
-              fontStyle: FontStyle.normal,
-              height: 1.25,
-              letterSpacing: 0.0,
-              color: Colors.white,
-            ),
+            style: AppText.buttonText16W400,
             textAlign: TextAlign.start,
           ),
         ),

@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
+
 
 class CalendarTimePopUp extends StatefulWidget {
   final DateTime startTime;
@@ -107,40 +110,19 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
             Text(
               _hours,
               textAlign: TextAlign.right,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 22.sp,
-                height: (28/22),
-                letterSpacing: 0.35,
-                color: Color(0xFF404040)
-              ),
+              style: AppText.calendarTimePopUp,
             ),
             SizedBox(width: 3.h,),
             Text(
               ':',
               textAlign: TextAlign.right,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 22.sp,
-                height: (28/22),
-                letterSpacing: 0.35,
-                color: Color(0xFF404040)
-              ),
+              style: AppText.calendarTimePopUp,
             ),
             SizedBox(width: 5.w,),
             Text(
               _minutes,
               textAlign: TextAlign.right,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontWeight: FontWeight.w400,
-                fontSize: 22.sp,
-                height: (28/22),
-                letterSpacing: 0.35,
-                color: Color(0xFF404040)
-              ),
+              style: AppText.calendarTimePopUp,
             ),
           ],
         )

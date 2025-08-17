@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
 
 import '../global/fields and alerts/email_field.dart';
 import '../global/fields and alerts/password_field.dart';
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 
 class LoginForm extends StatefulWidget {
@@ -58,21 +59,14 @@ class LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 342.w,
-      height: 232.h,
+      height: 233.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'E-mail',
             textAlign: TextAlign.left,
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w300,
-              fontSize: 14.sp,
-              height: (18/14),
-              letterSpacing: 0,
-              color: Color(0xFF404040)
-            ),
+            style: AppText.loginFormTex14W300,
           ),
           SizedBox(height: 8.h),
           EmailInputWidget(
@@ -83,14 +77,7 @@ class LoginFormState extends State<LoginForm> {
           Text(
             'Пароль',
             textAlign: TextAlign.left,
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w300,
-              fontSize: 14.sp,
-              height: (18/14),
-              letterSpacing: 0,
-              color: Color(0xFF404040)
-            ),
+            style: AppText.loginFormTex14W300,
           ),
           SizedBox(height: 8.h),
           PasswordInputWidget(
@@ -120,15 +107,7 @@ class LoginFormState extends State<LoginForm> {
               ),
               child: Text(
                 'Войти',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                  fontStyle: FontStyle.normal,
-                  height: 1.25,
-                  letterSpacing: 0.0,
-                  color: Colors.white,
-                ),
+                style: AppText.buttonText16W400,
                 textAlign: TextAlign.start,
               )
             )

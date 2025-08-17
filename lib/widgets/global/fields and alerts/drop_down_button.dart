@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../../scripts/resizer.dart';
+import '../../../scripts/text_styles.dart';
 
 
 class DropDownButton extends StatefulWidget {
@@ -55,23 +57,13 @@ class DropDownButtonState extends State<DropDownButton> {
           isExpanded: true,
           hint: Text(
             'Выбрать программу',
-            style: TextStyle(
-              fontFamily: 'Rubik',
-              fontWeight: FontWeight.w300,
-              fontSize: 16.sp,
-              color: Color.fromARGB(255, 167, 167, 167),
-            ),
+            style: AppText.dropDownButtonPlaceholder,
           ),
           items: _programs.map((program) => DropdownMenuItem<String>(
             value: program,
             child: Text(
               program,
-              style: TextStyle(
-                fontFamily: 'Rubik',
-                fontSize: 16.sp,
-                height: 1,
-                fontWeight: FontWeight.w400
-              ),
+              style: AppText.dropDownButtonItem,
             ),
           )).toList(),
           value: _selectedProgram,

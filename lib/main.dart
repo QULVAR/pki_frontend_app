@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'dart:math' as math;
+import 'scripts/resizer.dart';
 
 import 'screens/login.dart';
 import 'screens/home_page.dart';
@@ -16,22 +16,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-double kW = 1.0, kH = 1.0, s = 1.0;
-
-void initScale(BuildContext context) {
-  final mq = MediaQuery.of(context);
-  final size = mq.size;
-  kW = size.width / 390.0;
-  kH = size.height / 844.0;
-  s  = math.min(kW, kH);
-}
-
-extension SizerNum on num {
-  double get w  => this * kW;    //width
-  double get h  => this * kH;    //height
-  double get sp => this * s;     //safe
-}
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -41,7 +25,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  bool _authorized = true;
+  bool _authorized = true;                                                    //authorized
   final _loginPageKey = GlobalKey<LoginPageState>();
   final _homePageKey = GlobalKey<HomePageState>();
 
@@ -90,7 +74,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   bool checkAuthorize(String email, String password) {
+    // ignore: avoid_print
     print(email);
+    // ignore: avoid_print
     print(password);
     return true;
   }
@@ -104,9 +90,21 @@ class _MyAppState extends State<MyApp> {
         color: Colors.white
       ),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         builder: (context, child) {
           initScale(context);
-          return child!;
+          final mq = MediaQuery.of(context);
+          return MediaQuery(
+            data: mq.copyWith(
+              textScaler: const TextScaler.linear(1.0),
+              boldText: false,
+              alwaysUse24HourFormat: true,
+              accessibleNavigation: false,
+              highContrast: false,
+              invertColors: false,
+            ),
+            child: child!,
+          );
         },
         title: 'PKI_UL Frontend',
         localizationsDelegates: const [
@@ -114,6 +112,7 @@ class _MyAppState extends State<MyApp> {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
+        locale: const Locale('ru'),
         supportedLocales: const [
           Locale('ru'),
           Locale('en'),

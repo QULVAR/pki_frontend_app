@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pki_frontend_app/main.dart';
+
+import '../../scripts/resizer.dart';
+import '../../scripts/text_styles.dart';
 
 
 class HowItWorksWidget extends StatefulWidget {
@@ -42,13 +44,7 @@ class _HowItWorksWidgetState extends State<HowItWorksWidget>
                   children: [
                     Text(
                       'Как это работает?',
-                      style: TextStyle(
-                        fontFamily: 'Rubik',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        height: 1.25,
-                        color: Color(0xFF3E4E5E),
-                      ),
+                      style: context.menuBody16W400(Color(0xFF3E4E5E)),
                     ),
                     SvgPicture.asset(
                       _expanded ? "assets/icons/arrow_up.svg" : "assets/icons/arrow_down.svg",
@@ -73,46 +69,22 @@ class _HowItWorksWidgetState extends State<HowItWorksWidget>
                                   SizedBox(height: 17.h),
                                   Text(
                                     "Внесение данных по номеру телефона",
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp,
-                                      height: (20 / 14),
-                                      color: Color(0xFF3E4E5E),
-                                    ),
+                                    style: AppText.addProgramHowItWorksH1,
                                   ),
                                   SizedBox(height: 9.h),
                                   Text(
                                     "Для добавления программы пользователю, введите его номер телефона в указанное текстовое поле.",
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 12.sp,
-                                      height: 1.122,
-                                      color: Color(0xFF777777),
-                                    ),
+                                    style: context.addProgramHowItWorksText(1.222),
                                   ),
                                   SizedBox(height: 21.h),
                                   Text(
                                     "Выбор программы",
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14.sp,
-                                      height: (20 / 14),
-                                      color: Color(0xFF3E4E5E),
-                                    ),
+                                    style: AppText.addProgramHowItWorksH1,
                                   ),
                                   SizedBox(height: 9.h),
                                   Text(
                                     "В выпадающем списке выберите программу, которую необходимо применить к выбранному пользователю.",
-                                    style: TextStyle(
-                                      fontFamily: 'Rubik',
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 12.sp,
-                                      height: 1.15,
-                                      color: Color(0xFF777777),
-                                    ),
+                                    style: context.addProgramHowItWorksText(1.15),
                                   ),
                                 ],
                               ),

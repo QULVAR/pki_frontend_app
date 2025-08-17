@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pki_frontend_app/main.dart';
+
 import 'program_control_numbers_generator.dart';
+import '../../../scripts/text_styles.dart';
+import '../../../scripts/resizer.dart';
 
 
 class ProgramControlDataViewer extends StatefulWidget {
@@ -31,14 +33,7 @@ class ProgramControlDataViewerState extends State<ProgramControlDataViewer> {
               padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 8.h),
               child: Text(
                 'Номер телефона',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: AppText.programControlDataViewerText,
               ),
             ),
             SizedBox(
@@ -56,14 +51,7 @@ class ProgramControlDataViewerState extends State<ProgramControlDataViewer> {
               padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 8.h, right: 4.w),
               child: Text(
                 'Статус',
-                style: TextStyle(
-                  fontFamily: 'Rubik',
-                  fontWeight: FontWeight.w300,
-                  fontSize: 12.sp,
-                  height: 1,
-                  letterSpacing: 0,
-                  color: Color(0xFF404040)
-                ),
+                style: AppText.programControlDataViewerText,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -78,14 +66,7 @@ class ProgramControlDataViewerState extends State<ProgramControlDataViewer> {
                 padding: EdgeInsets.only(top: 4.h, left: 4.w, bottom: 4.h, right: 4.w),
                 child: Text(
                   'Нет данных',
-                  style: TextStyle(
-                    fontFamily: 'Rubik',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16.sp,
-                    height: 1,
-                    letterSpacing: 0,
-                    color: Color(0xFF404040)
-                  ),
+                  style: context.programControlDataViewerText(FontWeight.w400, 16.sp),
                   textAlign: TextAlign.center,
                 ),
               ),

@@ -103,7 +103,9 @@
 	│       └── statistics.dart
 	├── scripts
 	│   ├── formatting.dart
-	│   └── json_reader.dart
+	│   ├── json_reader.dart
+	│   ├── resizer.dart
+	│   └── text_styles.dart
 	└── widgets
 	    ├── add_program
 	    │   ├── add_program_form.dart
