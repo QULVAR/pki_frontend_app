@@ -7,10 +7,12 @@ import '../../../scripts/text_styles.dart';
 
 class CalendarTimePopUp extends StatefulWidget {
   final DateTime startTime;
+  final DateTime selectedDate;
   final Function selectedTime;
   CalendarTimePopUp({
     super.key,
     required this.selectedTime,
+    required this.selectedDate,
     DateTime? time
   }): startTime = time ?? DateTime.now();
 
@@ -22,6 +24,9 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
   
   String _hours = '09';
   String _minutes = '41';
+
+  DateTime maximumDate = DateTime(2000, 1, 1, 23, 59);
+  DateTime minimumDate = DateTime(2000, 1, 1, 0, 0);
 
   @override
   void initState() {
@@ -42,6 +47,12 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
 
   @override
   Widget build(BuildContext context) {
+    final nowDate = DateTime.now();
+    if ((widget.selectedDate.year == nowDate.year)
+      && (widget.selectedDate.month == nowDate.month)
+      && (widget.selectedDate.day == nowDate.day)) {
+        maximumDate = DateTime(2000, 1, 1, nowDate.hour, nowDate.minute);
+      }
     return Container(
       width: 86.w,
       height: 36.h,
@@ -85,8 +96,10 @@ class CalendarTimePopUpState extends State<CalendarTimePopUp> {
                         height: 216.h,
                         child: CupertinoDatePicker(
                           mode: CupertinoDatePickerMode.time,
-                          initialDateTime: DateTime(2025, 1, 1, int.parse(_hours), int.parse(_minutes)),
+                          initialDateTime: DateTime(2000, 1, 1, int.parse(_hours), int.parse(_minutes)),
                           use24hFormat: true,
+                          minimumDate: minimumDate,
+                          maximumDate: maximumDate,
                           onDateTimeChanged: (DateTime value) {
                             final formattedValue = getFormattedTime(value);
                             setState(() {

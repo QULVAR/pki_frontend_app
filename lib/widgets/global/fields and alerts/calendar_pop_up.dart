@@ -50,6 +50,8 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
   late DateTime selectedTimeEnd;
   late DateTime selectedDateStart;
   late DateTime selectedDateEnd;
+  DateTime? selectedDateStartTime;
+  DateTime? selectedDateEndTime;
 
   void getTimeStart(DateTime value) {
     selectedTimeStart = value;
@@ -61,6 +63,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
         selectedTimeStart.hour,
         selectedTimeStart.minute,
       );
+      setState(() {
+        selectedDateStartTime = selectedDateStart;
+      });
       widget.showDateSingle(selectedDateStart);
       widget.showDateRange([
         selectedDateStart,
@@ -79,6 +84,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
         selectedTimeEnd.hour,
         selectedTimeEnd.minute,
       );
+      setState(() {
+        selectedDateEndTime = selectedDateEnd;
+      });
       widget.showDateRange([
         selectedDateStart,
         selectedDateEnd
@@ -94,6 +102,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
       selectedTimeStart.hour,
       selectedTimeStart.minute,
     );
+    setState(() {
+        selectedDateStartTime = selectedDateStart;
+      });
     if (args.value.endDate != null) {
       selectedDateEnd = DateTime(
         args.value.endDate.year,
@@ -102,6 +113,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
         selectedTimeEnd.hour,
         selectedTimeEnd.minute,
       );
+      setState(() {
+        selectedDateEndTime = selectedDateEnd;
+      });
       widget.showDateRange([
         selectedDateStart,
         selectedDateEnd
@@ -117,6 +131,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
       selectedTimeStart.hour,
       selectedTimeStart.minute,
     );
+    setState(() {
+      selectedDateStartTime = selectedDateStart;
+    });
     widget.showDateSingle(selectedDateStart);
   }
 
@@ -137,14 +154,17 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
     _initialDisplayDate = widget.startDate;
     if (widget.selectedDateSingle != null) {
       selectedDateStart = widget.selectedDateSingle!;
+      selectedDateStartTime = selectedDateStart;
       selectedTimeStart = widget.selectedDateSingle!;
     }
     if (widget.selectedDateRange != null) {
       if (widget.selectedDateRange!.startDate != null) {
         selectedDateStart = widget.selectedDateRange!.startDate!;
+        selectedDateStartTime = selectedDateStart;
         selectedTimeStart = widget.selectedDateRange!.startDate!;
         if (widget.selectedDateRange!.endDate != null) {
           selectedDateEnd = widget.selectedDateRange!.endDate!;
+          selectedDateEndTime = selectedDateEnd;
           selectedTimeEnd = widget.selectedDateRange!.endDate!;
         }
       } else if (widget.selectedDateRange!.endDate != null) {
@@ -332,6 +352,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CalendarTimePopUp(
+                          selectedDate: selectedDateStartTime != null
+                          ? selectedDateStartTime!
+                          : DateTime(2000, 1, 1, 0, 0),
                           time: widget.mode == 'single'
                               ? widget.selectedDateSingle ?? widget.startDate
                               : widget.selectedDateRange != null
@@ -375,6 +398,9 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                           time: widget.selectedDateRange != null
                                 ? widget.selectedDateRange!.endDate ?? widget.startDate
                                 : widget.startDate,
+                          selectedDate: selectedDateEndTime != null
+                          ? selectedDateEndTime!
+                          : DateTime(2000, 1, 1, 0, 0),
                           selectedTime: getTimeEnd,
                         )
                       ],
